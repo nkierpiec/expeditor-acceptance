@@ -1,25 +1,55 @@
----
-expeditor:
-    defaults:
-    buildkite:
-        timeout_in_minutes: 45
-        retry:
-        automatic:
-            limit: 1
-
 steps:
-
-- label: default
-  agents:
-    queue: default
-  timeout_in_minutes: 2
-  commands:
-    - sudo hab install --binlink chef/inspec
-    - inspec exec inspec/profiles/unprivileged
-
-- wait
-
-# Allow the single-use insances to spin down
-- command: sleep 60
-
-- wait
+    - label: default
+      plugins:
+        - danthorpe/cache#v1.0.0:
+            paths: [ "chef-backend-test-data/" ]
+      env:
+        BUILDKITE_PLUGIN_CACHE_S3_BUCKET_NAME: chef-cd-cache
+        BUILDKITE_PLUGIN_CACHE_S3_PROFILE: chef-cd
+      agents:
+        queue: default
+      timeout_in_minutes: 2
+      commands:
+        - sudo hab install --binlink chef/inspec
+        - inspec exec inspec/profiles/unprivileged
+  
+    - label: default-privileged
+      agents:
+        queue: default-privileged
+      timeout_in_minutes: 2
+      commands:
+        - sudo hab install --binlink chef/inspec
+        - inspec exec inspec/profiles/privileged
+  
+    - label: single-use
+      agents:
+        queue: single-use
+      timeout_in_minutes: 2
+      commands:
+        - sudo hab install --binlink chef/inspec
+        - inspec exec inspec/profiles/unprivileged
+        - buildkite-agent meta-data set "single-use" \$BUILDKITE_AGENT_META_DATA_AWS_INSTANCE_ID
+  
+    - label: single-use-privileged
+      agents:
+        queue: single-use-privileged
+      timeout_in_minutes: 2
+      commands:
+        - sudo hab install --binlink chef/inspec
+        - inspec exec inspec/profiles/privileged
+        - buildkite-agent meta-data set "single-use-privileged" \$BUILDKITE_AGENT_META_DATA_AWS_INSTANCE_ID
+  
+  
+    - wait
+  
+    # Allow the single-use insances to spin down
+    - command: sleep 60
+  
+    - wait
+  
+    - label: validate
+      agents:
+        queue: default
+      commands:
+        - sudo hab install --binlink chef/inspec
+        - inspec exec -t aws:// inspec/profiles/validate
