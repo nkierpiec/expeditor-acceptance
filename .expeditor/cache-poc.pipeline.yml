@@ -1,7 +1,7 @@
 steps:
     - label: cache
       plugins:
-        - chef/cache#c0818ffc6ee78b0b3cb69c96ef8712dd288255b5:
+        - chef/cache#a51db9af1ec6d0ead5ac67ae5f423813de88df93:
             cached_folders:
             - nate_test/
       agents:
