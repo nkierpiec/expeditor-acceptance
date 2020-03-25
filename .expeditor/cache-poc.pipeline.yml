@@ -1,9 +1,10 @@
 steps:
     - label: cache
       plugins:
-        - chef/cache#c4a5a6e4853a411d817b661b53c96e7eea28e0b2:
+        - chef/cache#7a47257aba3be5800458eded2ea15580dde70825:
             cached_folders:
             - nate_test/
+            s3_bucket: "core-buildkite-cache-chef-canary-canary"
       agents:
         queue: default
       timeout_in_minutes: 2
