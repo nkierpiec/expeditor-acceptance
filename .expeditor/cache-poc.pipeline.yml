@@ -1,7 +1,7 @@
 steps:
     - label: cache
       plugins:
-        - chef/cache#nate_test:
+        - chef/cache#poc_initial_updates:
             cached_folders:
             - nate_test/
       agents:
