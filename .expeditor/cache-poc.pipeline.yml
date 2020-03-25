@@ -1,12 +1,9 @@
 steps:
     - label: cache
       plugins:
-        - danthorpe/cache#v1.0.0:
-            cache_key: foo
-            paths: [ "chef-backend-test-data/" ]
-      env:
-        BUILDKITE_PLUGIN_CACHE_S3_BUCKET_NAME: chef-cd-cache
-        BUILDKITE_PLUGIN_CACHE_S3_PROFILE: chef-cd
+        - chef/cache#nate_test:
+            cached_folders:
+            - nate_test/
       agents:
         queue: default
       timeout_in_minutes: 2
