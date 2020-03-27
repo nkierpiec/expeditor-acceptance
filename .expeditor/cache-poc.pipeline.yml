@@ -1,8 +1,13 @@
+---
+expeditor:
+  cached_folders:
+    - nate_test
+
 steps:
     - label: cache
       expeditor:
         cached_folders:
-          - nate_test
+          - "!nate_test"
       agents:
         queue: default
       timeout_in_minutes: 2
