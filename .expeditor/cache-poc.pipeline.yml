@@ -8,6 +8,7 @@ steps:
       expeditor:
         cached_folders:
           - "!nate_test"
+          - /usr/bin
       agents:
         queue: default
       timeout_in_minutes: 2
