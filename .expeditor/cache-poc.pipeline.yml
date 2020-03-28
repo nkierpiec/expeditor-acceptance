@@ -4,13 +4,40 @@ expeditor:
     - nate_test
 
 steps:
-    - label: cache
+    - label: system directory test
       expeditor:
         cached_folders:
-          - "!nate_test"
           - /usr/bin
       agents:
         queue: default
       timeout_in_minutes: 2
-      commands:
-        - ls -al ./
+
+    - label: "label!#@$@!^n :ruby: name\[]!_+test"
+      agents:
+        queue: default
+      timeout_in_minutes: 2
+
+    - label: knockout test
+      expeditor:
+        cached_folders:
+          - "!nate_test"
+      agents:
+        queue: default
+      timeout_in_minutes: 2
+
+    - label: global and step test
+      expeditor:
+        cached_folders:
+          - nate_test/
+      agents:
+        queue: default
+      timeout_in_minutes: 2
+
+    - label: "./test"
+      expeditor:
+        cached_folders:
+          - "!nate_test"
+          - ./nate_test
+      agents:
+        queue: default
+      timeout_in_minutes: 2
