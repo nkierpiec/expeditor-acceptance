@@ -4,13 +4,14 @@ expeditor:
     - nate_test
 
 steps:
-    - label: system directory test
-      expeditor:
-        cached_folders:
-          - /usr/bin
-      agents:
-        queue: default
-      timeout_in_minutes: 2
+    # WORKS!
+    # - label: system directory test
+    #   expeditor:
+    #     cached_folders:
+    #       - /usr/bin
+    #   agents:
+    #     queue: default
+    #   timeout_in_minutes: 2
 
     - label: "label!#@$@!^n :ruby: name[]!_+test"
       agents:
