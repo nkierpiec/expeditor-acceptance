@@ -13,7 +13,7 @@ steps:
     #     queue: default
     #   timeout_in_minutes: 2
 
-    - label: "label#$^n :ruby: name[]_+test"
+    - label: "label#$n :ruby: name[]_+test"
       agents:
         queue: default
       timeout_in_minutes: 2
