@@ -1,7 +1,7 @@
 ---
-expeditor:
-  cached_folders:
-    - nate_test
+# expeditor:
+#   cached_folders:
+#     - nate_test
 
 steps:
     # WORKS!
@@ -14,6 +14,11 @@ steps:
     #   timeout_in_minutes: 2
 
     - label: "label#$n :ruby: name[]_+test"
+      plugins:
+      - chef/cache#adfc1c2dcb433f66db787e4e3f19e6ec44b25649:
+          s3_bucket: "core-buildkite-cache-chef-canary-canary"
+          cached_folders:
+          - "nate_test"
       agents:
         queue: default
       timeout_in_minutes: 2
@@ -30,15 +35,6 @@ steps:
     #   expeditor:
     #     cached_folders:
     #       - nate_test/
-    #   agents:
-    #     queue: default
-    #   timeout_in_minutes: 2
-
-    # - label: "./test"
-    #   expeditor:
-    #     cached_folders:
-    #       - "!nate_test"
-    #       - ./nate_test
     #   agents:
     #     queue: default
     #   timeout_in_minutes: 2
