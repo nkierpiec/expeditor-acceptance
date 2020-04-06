@@ -24,8 +24,9 @@ steps:
           docker:
             privileged: true
       commands: 
+        - ls -al ./
         - bundle install --path ./vendor
-        - ls -al ./vendor/ruby/2.6.0/gems/
+        - ls -al ./vendor/ruby/2.6.0/gems/net-ssh-5.2.0
       timeout_in_minutes: 2
 
     # - label: knockout test
