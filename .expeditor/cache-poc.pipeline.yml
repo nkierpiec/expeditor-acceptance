@@ -22,7 +22,7 @@ steps:
       agents:
         queue: default-privileged
       commands: 
-        - gem install net-ssh --install-dir ./vendor
+        - bundle install --path ./vendor
       timeout_in_minutes: 2
 
     # - label: knockout test
