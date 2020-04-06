@@ -15,14 +15,14 @@ steps:
 
     - label: "label#$n :ruby: name[]_+test"
       plugins:
-      - chef/cache#cc77a988493ec9bed408cfa8df2326b0af325c9a:
+      - chef/cache#6022732fe4a90841581750a41c2fe017a1055abb:
           s3_bucket: "core-buildkite-cache-chef-canary-canary"
           cached_folders:
-          - "cache_test/"
+          - "vendor/"
       agents:
         queue: default-privileged
       commands: 
-        - ls
+        - gem install net-ssh --install-dir ./vendor
       timeout_in_minutes: 2
 
     # - label: knockout test
