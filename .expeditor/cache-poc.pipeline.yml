@@ -25,6 +25,7 @@ steps:
             privileged: true
       commands: 
         - bundle install --path ./vendor
+        - ls -al ./vendor
       timeout_in_minutes: 2
 
     # - label: knockout test
