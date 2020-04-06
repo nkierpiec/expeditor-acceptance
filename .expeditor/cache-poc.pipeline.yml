@@ -19,8 +19,10 @@ steps:
           s3_bucket: "core-buildkite-cache-chef-canary-canary"
           cached_folders:
           - "vendor/"
-      agents:
-        queue: default-privileged
+      expeditor:
+        executor:
+          docker:
+            privileged: true
       commands: 
         - bundle install --path ./vendor
       timeout_in_minutes: 2
