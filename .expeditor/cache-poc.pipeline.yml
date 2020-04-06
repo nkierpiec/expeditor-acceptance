@@ -1,7 +1,7 @@
----
-expeditor:
-  cached_folders:
-    - nate_test
+# ---
+# expeditor:
+#   cached_folders:
+#     - nate_test
 
 steps:
     # WORKS!
@@ -15,7 +15,7 @@ steps:
 
     - label: "label#$n :ruby: name[]_+test"
       plugins:
-      - chef/cache#4b8f1efe30dff408e7b477317c88092d9da593fb:
+      - chef/cache#f19a22f62dfec51bd6e2fcc3350a913af805ab54:
           s3_bucket: "core-buildkite-cache-chef-canary-canary"
           cached_folders:
           - "nate_test"
