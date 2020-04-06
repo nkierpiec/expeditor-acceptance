@@ -20,7 +20,7 @@ steps:
           cached_folders:
           - "cache_test/"
       agents:
-        queue: default
+        queue: default-privileged
       commands: 
         - ls
       timeout_in_minutes: 2
