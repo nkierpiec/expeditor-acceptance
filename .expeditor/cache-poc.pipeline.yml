@@ -15,7 +15,7 @@ steps:
 
     - label: "label#$n :ruby: name[]_+test"
       plugins:
-      - chef/cache#92801378cee4dc9a7b9feb2671eb90e2ffade9ba:
+      - chef/cache#cc77a988493ec9bed408cfa8df2326b0af325c9a:
           s3_bucket: "core-buildkite-cache-chef-canary-canary"
           cached_folders:
           - "nate_test"
