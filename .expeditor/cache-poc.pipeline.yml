@@ -18,7 +18,7 @@ steps:
       - chef/cache#cc77a988493ec9bed408cfa8df2326b0af325c9a:
           s3_bucket: "core-buildkite-cache-chef-canary-canary"
           cached_folders:
-          - "cache_test"
+          - "cache_test/"
       agents:
         queue: default
       commands: 
